@@ -30,4 +30,8 @@
     <string name="click_order">Click order to go to the shopping cart</string>
     <string name="reviews">reviews</string>
     <string name="leave_a_review">Leave a review</string>
+    <string name="your_feedback">Your feedback</string>
+    <string name="feedback">Feedback</string>
+    <string name="write_a_review">Write a review</string>
+    <string name="put_a_rating">Put a rating</string>
 </resources>

@@ -303,6 +303,7 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:text="@string/order"
                 android:textAllCaps="false"
+                app:rippleColor="@color/black_32"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:cornerRadius="8dp" />

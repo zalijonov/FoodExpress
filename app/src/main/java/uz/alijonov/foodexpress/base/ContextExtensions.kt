@@ -22,6 +22,7 @@ import androidx.core.content.FileProvider
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import uz.alijonov.foodexpress.utils.Constants
 import uz.alijonov.foodexpress.utils.GlideUtils
+import uz.alijonov.foodexpress.utils.TextUtils
 import uz.alijonov.foodexpress.view.custom.JWAlertDialog
 import uz.alijonov.foodexpress.view.custom.JWAlertDialogListener
 import uz.alijonov.foodexpress.view.custom.JWAlertType
@@ -453,6 +454,10 @@ fun Context.clearCookies() {
         cookieSyncMngr.stopSync()
         cookieSyncMngr.sync()
     }
+}
+
+fun Double?.formattedAmount(): String {
+    return TextUtils.getFormattedAmount(this)
 }
 
 fun Double.formatDot(): String {

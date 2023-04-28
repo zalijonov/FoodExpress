@@ -7,12 +7,15 @@ import uz.alijonov.foodexpress.base.BaseFragment
 import uz.alijonov.foodexpress.databinding.FragmentHomeBinding
 import uz.alijonov.foodexpress.model.RestaurantModel
 import uz.alijonov.foodexpress.screen.main.MainViewModel
+import uz.alijonov.foodexpress.screen.main.restaurant.RestaurantDetailActivity
+import uz.alijonov.foodexpress.utils.Constants
 import uz.alijonov.foodexpress.view.adapter.CategoryAdapter
 import uz.alijonov.foodexpress.view.adapter.NearbyRestaurantAdapter
 import uz.alijonov.foodexpress.view.adapter.OfferAdapter
 import uz.alijonov.foodexpress.view.adapter.RestaurantAdapterListener
 import uz.alijonov.foodexpress.view.adapter.TopRestaurantAdapter
 import uz.bdm.base.base.showError
+import uz.bdm.base.base.startActivity
 
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(), RestaurantAdapterListener {
@@ -88,6 +91,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), RestaurantAdapterListe
 
     override fun onClick(item: RestaurantModel) {
 
+        activity?.startActivity<RestaurantDetailActivity>(Constants.EXTRA_DATA, item.id)
     }
 
     override fun onClickItem(item: Any?) {

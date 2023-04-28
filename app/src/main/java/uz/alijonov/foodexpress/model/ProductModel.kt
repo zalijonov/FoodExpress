@@ -11,5 +11,6 @@ data class ProductModel(
     val price: Double,
     val ingredients: List<String>,
     val created_at: String,
-    val updated_at: String
+    val updated_at: String,
+    var cart_count: Int = 0
 ): Serializable

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottomsheet_background"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/raleway_bold"
+            android:text="@string/your_feedback"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imgClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:src="@drawable/vector" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="@string/feedback"
+        android:textColor="@color/gray_text"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/edComment"
+        android:layout_width="match_parent"
+        android:layout_height="215dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shadow_background"
+        android:gravity="start"
+        android:hint="@string/write_a_review"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="18dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/gray_text"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shadow_background"
+        android:orientation="vertical"
+        android:paddingHorizontal="50dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="@string/put_a_rating"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.fuzzproductions.ratingbar.RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/routing"
+            app:emptyDrawable="@drawable/star_outlined"
+            app:filledDrawable="@drawable/star_filled"
+            app:isIndicator="false"
+            app:numStars="5"
+            app:rating="0"
+            app:starSize="36dp"
+            app:stepSize="0.5" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMakeRating"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/gradient"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/raleway_bold"
+        android:text="@string/leave_a_review"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="8dp"
+        app:rippleColor="@color/black_32" />
+
+</LinearLayout>
