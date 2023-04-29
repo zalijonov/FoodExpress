@@ -19,7 +19,7 @@ class MainViewModel : ViewModel() {
     val nearbyData = MutableLiveData<List<RestaurantModel>>()
     val topData = MutableLiveData<List<RestaurantModel>>()
     val restaurantDetailData = MutableLiveData<RestaurantModel>()
-    val makeRatingData = MutableLiveData<Any?>()
+    val makeRatingData = MutableLiveData<String>()
 
     fun getOffers() {
         userRepository.getOffers(error, progress, offerData)

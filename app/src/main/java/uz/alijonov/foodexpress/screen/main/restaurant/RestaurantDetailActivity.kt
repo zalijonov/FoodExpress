@@ -3,6 +3,7 @@ package uz.alijonov.foodexpress.screen.main.restaurant
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import uz.alijonov.foodexpress.base.BaseActivity
 import uz.alijonov.foodexpress.base.BaseAdapterListener
 import uz.alijonov.foodexpress.databinding.ActivityRestaurantDetailBinding
@@ -14,14 +15,15 @@ import uz.alijonov.foodexpress.utils.Constants
 import uz.alijonov.foodexpress.view.adapter.FoodAdapter
 import uz.bdm.base.base.loadImage
 import uz.bdm.base.base.showError
+import uz.bdm.base.base.showSuccess
 import uz.bdm.base.base.showWarning
 import java.text.DecimalFormat
 
 class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>() {
 
-    lateinit var viewModel: MainViewModel
-    var restaurant: RestaurantModel? = null
-    var resId = 0
+    private lateinit var viewModel: MainViewModel
+    private var restaurant: RestaurantModel? = null
+    private var resId = 0
     override fun getViewBinding(): ActivityRestaurantDetailBinding {
         return ActivityRestaurantDetailBinding.inflate(layoutInflater)
     }
@@ -31,7 +33,7 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>()
         if (intent.hasExtra(Constants.EXTRA_DATA)) {
             resId = intent.getIntExtra(Constants.EXTRA_DATA, 0)
         }
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         viewModel.error.observe(this) {
             showError(it)
@@ -59,6 +61,10 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>()
             })
         }
 
+        viewModel.makeRatingData.observe(this){
+            showSuccess(it)
+        }
+
         binding.btnLeaveReview.setOnClickListener { showMakeRatingDialog() }
 
     }
@@ -76,7 +82,7 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>()
     }
 
     private fun showMakeRatingDialog() {
-        val dialog = BottomSheetDialog(this)
+        val dialog = BottomSheetDialog(this, BottomSheetDialogFragment.STYLE_NORMAL)
         val view = MakeRatingLayoutBinding.inflate(layoutInflater)
         dialog.setContentView(view.root)
         dialog.setCancelable(false)

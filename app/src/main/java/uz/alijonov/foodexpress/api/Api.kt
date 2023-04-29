@@ -39,7 +39,7 @@ interface Api {
     fun getRestaurantFoods(@Path("restaurant_id") id: Int): Observable<BaseResponse<List<ProductModel>>>
 
     @POST("make_rating")
-    fun makeRating(@Body request: MakeRatingRequest): Observable<BaseResponse<Any?>>
+    fun makeRating(@Body request: MakeRatingRequest): Observable<BaseResponse<String>>
 
 //    @GET("offer/{offer_id}/content")
 //    fun getOffer(@Path("offer_id") id: Int):

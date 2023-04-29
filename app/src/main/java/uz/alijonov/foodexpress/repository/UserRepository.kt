@@ -238,15 +238,15 @@ class UserRepository {
         request: MakeRatingRequest,
         error: MutableLiveData<String>,
         progress: MutableLiveData<Boolean>,
-        success: MutableLiveData<Any?>
+        success: MutableLiveData<String>
     ) {
         compositeDisposable.add(api.makeRating(request)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally { progress.value = false }
             .doOnSubscribe { progress.value = true }
-            .subscribeWith(object : DisposableObserver<BaseResponse<Any?>>() {
-                override fun onNext(t: BaseResponse<Any?>) {
+            .subscribeWith(object : DisposableObserver<BaseResponse<String>>() {
+                override fun onNext(t: BaseResponse<String>) {
                     if (t.success) {
                         success.value = t.data
                     } else {
