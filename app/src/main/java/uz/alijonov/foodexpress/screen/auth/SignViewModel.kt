@@ -25,5 +25,4 @@ class SignViewModel : ViewModel() {
         userRepository.register(request, error, progress, authData)
     }
 
-
 }

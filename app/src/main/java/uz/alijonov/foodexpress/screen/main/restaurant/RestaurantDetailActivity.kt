@@ -34,15 +34,8 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>()
             resId = intent.getIntExtra(Constants.EXTRA_DATA, 0)
         }
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-
-        viewModel.error.observe(this) {
-            showError(it)
-        }
-
-        viewModel.progress.observe(this) {
-            setProgress(it)
-        }
-
+        viewModel.error.observe(this) { showError(it) }
+        viewModel.progress.observe(this) { setProgress(it) }
         viewModel.restaurantDetailData.observe(this) {
             restaurant = it
             binding.imageRes.loadImage(it.main_image)
@@ -52,19 +45,12 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>()
             binding.tvAddress.text = it.address
             binding.tvPhone.text = it.phone
             binding.tvDistance.text = it.distance.toString()
-
             binding.recFoods.layoutManager = GridLayoutManager(this, 2)
             binding.recFoods.adapter = FoodAdapter(it.product_list, object : BaseAdapterListener {
-                override fun onClickItem(item: Any?) {
-
-                }
+                override fun onClickItem(item: Any?) {}
             })
         }
-
-        viewModel.makeRatingData.observe(this){
-            showSuccess(it)
-        }
-
+        viewModel.makeRatingData.observe(this) { showSuccess(it) }
         binding.btnLeaveReview.setOnClickListener { showMakeRatingDialog() }
 
     }
