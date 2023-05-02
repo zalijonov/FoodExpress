@@ -37,7 +37,7 @@
             android:src="@drawable/profile" />
     </LinearLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -209,7 +209,7 @@
                     app:filledDrawable="@drawable/star_filled"
                     app:isIndicator="true"
                     app:numStars="5"
-                    app:rating="3.5" />
+                    app:rating="0" />
 
                 <TextView
                     android:id="@+id/tvRating"
@@ -289,9 +289,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recFoods"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:overScrollMode="never" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnMakeOrder"
@@ -376,5 +375,5 @@
                     android:layout_marginStart="4dp"/>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

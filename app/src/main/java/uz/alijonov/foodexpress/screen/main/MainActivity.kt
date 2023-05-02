@@ -9,6 +9,7 @@ import android.location.LocationListener
 import android.location.LocationManager
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import org.greenrobot.eventbus.EventBus
 import uz.alijonov.foodexpress.R
 import uz.alijonov.foodexpress.base.BaseActivity
 import uz.alijonov.foodexpress.databinding.ActivityMainBinding
@@ -35,6 +36,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun initViews() {
+
+        if(!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this)
+        }
+
+        if(intent.hasExtra(Constants.START_FRAGMENT)){
+
+        }
 
         isLocationPermissionGranted()
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager

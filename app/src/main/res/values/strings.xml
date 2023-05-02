@@ -34,4 +34,8 @@
     <string name="feedback">Feedback</string>
     <string name="write_a_review">Write a review</string>
     <string name="put_a_rating">Put a rating</string>
+    <string name="card_of_food_orders">Card of food orders</string>
+    <string name="total">Total</string>
+    <string name="check_out">Check out</string>
+    <string name="the_cart_is_empty">Savat bo\'sh. Iltimos restoranga kirib o\'zingizga kerakli mahsulotlarni savatga qo\'shing</string>
 </resources>

@@ -57,6 +57,12 @@ object Prefs {
         Hawk.put(PREF_CART, list)
     }
 
+    fun getItemCartCount(item: ProductModel): Int{
+        val list = getCartList().toMutableList()
+        val cart = list.firstOrNull { it.id == item.id }
+        return cart?.cart_count ?: 0
+    }
+
     fun getCartList(): List<ProductModel> {
         return Hawk.get(PREF_CART, emptyList())
     }

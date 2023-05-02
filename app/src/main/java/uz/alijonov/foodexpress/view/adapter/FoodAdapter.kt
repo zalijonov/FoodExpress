@@ -2,10 +2,13 @@ package uz.alijonov.foodexpress.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import org.greenrobot.eventbus.EventBus
 import uz.alijonov.foodexpress.base.BaseAdapter
 import uz.alijonov.foodexpress.base.BaseAdapterListener
 import uz.alijonov.foodexpress.databinding.FoodItemLayoutBinding
+import uz.alijonov.foodexpress.model.EventModel
 import uz.alijonov.foodexpress.model.ProductModel
+import uz.alijonov.foodexpress.utils.Constants
 import uz.alijonov.foodexpress.utils.Prefs
 import uz.bdm.base.base.formattedAmount
 import uz.bdm.base.base.loadImage
@@ -38,6 +41,7 @@ class FoodAdapter(val list: List<ProductModel>, val handler: BaseAdapterListener
             item.cart_count = count
             holder.binding.tvCount.text
             Prefs.add2Cart(item)
+            updateCart()
             notifyDataSetChanged()
         }
 
@@ -50,7 +54,12 @@ class FoodAdapter(val list: List<ProductModel>, val handler: BaseAdapterListener
             item.cart_count = count
             holder.binding.tvCount.text
             Prefs.add2Cart(item)
+            updateCart()
             notifyDataSetChanged()
         }
+    }
+
+    fun updateCart(){
+        EventBus.getDefault().post(EventModel(Constants.EVENT_UPDATE_CART, 0))
     }
 }

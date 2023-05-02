@@ -1,15 +1,19 @@
 package uz.alijonov.foodexpress.screen.main.restaurant
 
+import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import uz.alijonov.foodexpress.R
 import uz.alijonov.foodexpress.base.BaseActivity
 import uz.alijonov.foodexpress.base.BaseAdapterListener
 import uz.alijonov.foodexpress.databinding.ActivityRestaurantDetailBinding
 import uz.alijonov.foodexpress.databinding.MakeRatingLayoutBinding
 import uz.alijonov.foodexpress.model.RestaurantModel
 import uz.alijonov.foodexpress.model.request.MakeRatingRequest
+import uz.alijonov.foodexpress.screen.main.MainActivity
 import uz.alijonov.foodexpress.screen.main.MainViewModel
 import uz.alijonov.foodexpress.utils.Constants
 import uz.alijonov.foodexpress.view.adapter.FoodAdapter
@@ -17,6 +21,7 @@ import uz.bdm.base.base.loadImage
 import uz.bdm.base.base.showError
 import uz.bdm.base.base.showSuccess
 import uz.bdm.base.base.showWarning
+import uz.bdm.base.base.startActivity
 import java.text.DecimalFormat
 
 class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>() {
@@ -52,6 +57,18 @@ class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>()
         }
         viewModel.makeRatingData.observe(this) { showSuccess(it) }
         binding.btnLeaveReview.setOnClickListener { showMakeRatingDialog() }
+
+        binding.tvOpenMap.setOnClickListener {
+            var geoUri = "http://maps.google.com/maps?q=loc:" + (restaurant?.latitude
+                ?: 0.0) + "," + (restaurant?.longitude ?: 0.0) + " (" + restaurant?.name + ")"
+
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri))
+            startActivity(intent)
+        }
+
+        binding.btnMakeOrder.setOnClickListener {
+            startActivity<MainActivity>(Constants.START_FRAGMENT, R.id.actionCart)
+        }
 
     }
 

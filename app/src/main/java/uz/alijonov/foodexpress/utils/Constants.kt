@@ -18,5 +18,6 @@ class Constants{
         const val EXTRA_DATA_2 = "extra_data_2"
 
         const val EVENT_LOGOUT = 1
+        const val EVENT_UPDATE_CART = 2
     }
 }
