@@ -20,5 +20,6 @@
     <color name="gray_text">#AEAEAE</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#545454</color>
     <color name="yellow">#CAFF37</color>
+    <color name="tint_49">#494949</color>
     <color name="shadow_bg">#2E2E2E</color>
 </resources>

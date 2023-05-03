@@ -38,4 +38,9 @@
     <string name="total">Total</string>
     <string name="check_out">Check out</string>
     <string name="the_cart_is_empty">Savat bo\'sh. Iltimos restoranga kirib o\'zingizga kerakli mahsulotlarni savatga qo\'shing</string>
+    <string name="choose_the_application_method">Choose the application method</string>
+    <string name="enter_the_location">Enter the location</string>
+    <string name="choose_a_payment_method">Choose a payment method</string>
+    <string name="cash">Cash</string>
+    <string name="credit_card">Credit card</string>
 </resources>

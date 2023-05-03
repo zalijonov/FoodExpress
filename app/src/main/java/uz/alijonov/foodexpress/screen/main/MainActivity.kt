@@ -10,9 +10,11 @@ import android.location.LocationManager
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 import uz.alijonov.foodexpress.R
 import uz.alijonov.foodexpress.base.BaseActivity
 import uz.alijonov.foodexpress.databinding.ActivityMainBinding
+import uz.alijonov.foodexpress.model.EventModel
 import uz.alijonov.foodexpress.screen.main.cart.CartFragment
 import uz.alijonov.foodexpress.screen.main.home.HomeFragment
 import uz.alijonov.foodexpress.screen.main.map.MapsFragment
@@ -30,7 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private var currentLocation: Location? = null
     lateinit var locationManager: LocationManager
 
-    //    private lateinit var fusedLocationServie: FusedLocationProviderClient
+    //    private lateinit var fusedLocationServie: FusedLocationProviderClient*
     override fun getViewBinding(): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
     }
@@ -42,7 +44,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
 
         if(intent.hasExtra(Constants.START_FRAGMENT)){
+            if(intent.getIntExtra(Constants.START_FRAGMENT, 0) == R.id.actionCart){
+                binding.bottomNavigation.selectedItemId = R.id.actionCart
 
+                activeFragment = cartFragment
+            }
         }
 
         isLocationPermissionGranted()
@@ -95,6 +101,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         }
 
+    }
+
+    @Subscribe
+    fun onEvent(event: EventModel<Any>){
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if(EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().unregister(this)
+        }
     }
 
     override fun loadData() {
