@@ -6,7 +6,7 @@ import uz.alijonov.foodexpress.base.BaseAdapter
 import uz.alijonov.foodexpress.base.BaseAdapterListener
 import uz.alijonov.foodexpress.databinding.CategoryItemLayoutBinding
 import uz.alijonov.foodexpress.model.CategoryModel
-import uz.bdm.base.base.loadImage
+import uz.alijonov.foodexpress.base.loadImage
 
 class CategoryAdapter(val list: List<CategoryModel>, val handler: BaseAdapterListener) :
     BaseAdapter<CategoryItemLayoutBinding>(list.toMutableList(), handler) {

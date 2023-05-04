@@ -5,8 +5,7 @@ import uz.alijonov.foodexpress.base.BaseActivity
 import uz.alijonov.foodexpress.screen.auth.SignActivity
 import uz.alijonov.foodexpress.screen.main.MainActivity
 import uz.alijonov.foodexpress.utils.Prefs
-import uz.bdm.base.base.startActivity
-import uz.bdm.base.base.startClearTopActivity
+import uz.alijonov.foodexpress.base.startClearTopActivity
 
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     override fun getViewBinding(): ActivitySplashBinding {

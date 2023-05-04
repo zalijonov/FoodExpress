@@ -17,11 +17,11 @@ import uz.alijonov.foodexpress.screen.main.MainActivity
 import uz.alijonov.foodexpress.screen.main.MainViewModel
 import uz.alijonov.foodexpress.utils.Constants
 import uz.alijonov.foodexpress.view.adapter.FoodAdapter
-import uz.bdm.base.base.loadImage
-import uz.bdm.base.base.showError
-import uz.bdm.base.base.showSuccess
-import uz.bdm.base.base.showWarning
-import uz.bdm.base.base.startActivity
+import uz.alijonov.foodexpress.base.loadImage
+import uz.alijonov.foodexpress.base.showError
+import uz.alijonov.foodexpress.base.showSuccess
+import uz.alijonov.foodexpress.base.showWarning
+import uz.alijonov.foodexpress.base.startActivity
 import java.text.DecimalFormat
 
 class RestaurantDetailActivity : BaseActivity<ActivityRestaurantDetailBinding>() {

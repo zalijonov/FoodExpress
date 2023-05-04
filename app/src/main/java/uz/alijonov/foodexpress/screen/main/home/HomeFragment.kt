@@ -14,8 +14,8 @@ import uz.alijonov.foodexpress.view.adapter.NearbyRestaurantAdapter
 import uz.alijonov.foodexpress.view.adapter.OfferAdapter
 import uz.alijonov.foodexpress.view.adapter.RestaurantAdapterListener
 import uz.alijonov.foodexpress.view.adapter.TopRestaurantAdapter
-import uz.bdm.base.base.showError
-import uz.bdm.base.base.startActivity
+import uz.alijonov.foodexpress.base.showError
+import uz.alijonov.foodexpress.base.startActivity
 
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>(), RestaurantAdapterListener {

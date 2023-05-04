@@ -12,6 +12,7 @@ import uz.alijonov.foodexpress.model.CategoryModel
 import uz.alijonov.foodexpress.model.OfferModel
 import uz.alijonov.foodexpress.model.RestaurantModel
 import uz.alijonov.foodexpress.model.request.LoginRequest
+import uz.alijonov.foodexpress.model.request.MakeOrderModel
 import uz.alijonov.foodexpress.model.request.MakeRatingRequest
 import uz.alijonov.foodexpress.model.request.RegisterRequest
 import uz.alijonov.foodexpress.model.request.RestaurantRequest
@@ -249,6 +250,37 @@ class UserRepository {
                 override fun onNext(t: BaseResponse<String>) {
                     if (t.success) {
                         success.value = t.data
+                    } else {
+                        error.value = t.message
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                    error.value = e.message
+                }
+
+                override fun onComplete() {
+
+                }
+            })
+        )
+    }
+
+    fun makeOrder(
+        request: MakeOrderModel,
+        error: MutableLiveData<String>,
+        progress: MutableLiveData<Boolean>,
+        success: MutableLiveData<String>
+    ) {
+        compositeDisposable.add(api.makeOrder(request)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doFinally { progress.value = false }
+            .doOnSubscribe { progress.value = true }
+            .subscribeWith(object : DisposableObserver<BaseResponse<String>>() {
+                override fun onNext(t: BaseResponse<String>) {
+                    if (t.success) {
+                        success.value = t.message
                     } else {
                         error.value = t.message
                     }

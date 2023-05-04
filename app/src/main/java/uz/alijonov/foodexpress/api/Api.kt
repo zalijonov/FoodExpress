@@ -10,6 +10,7 @@ import uz.alijonov.foodexpress.model.OfferModel
 import uz.alijonov.foodexpress.model.ProductModel
 import uz.alijonov.foodexpress.model.RestaurantModel
 import uz.alijonov.foodexpress.model.request.LoginRequest
+import uz.alijonov.foodexpress.model.request.MakeOrderModel
 import uz.alijonov.foodexpress.model.request.MakeRatingRequest
 import uz.alijonov.foodexpress.model.request.RegisterRequest
 import uz.alijonov.foodexpress.model.request.RestaurantRequest
@@ -40,6 +41,9 @@ interface Api {
 
     @POST("make_rating")
     fun makeRating(@Body request: MakeRatingRequest): Observable<BaseResponse<String>>
+
+    @POST("make_order")
+    fun makeOrder(@Body request: MakeOrderModel): Observable<BaseResponse<String>>
 
 //    @GET("offer/{offer_id}/content")
 //    fun getOffer(@Path("offer_id") id: Int):

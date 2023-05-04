@@ -10,8 +10,8 @@ import uz.alijonov.foodexpress.model.EventModel
 import uz.alijonov.foodexpress.model.ProductModel
 import uz.alijonov.foodexpress.utils.Constants
 import uz.alijonov.foodexpress.utils.Prefs
-import uz.bdm.base.base.formattedAmount
-import uz.bdm.base.base.loadImage
+import uz.alijonov.foodexpress.base.formattedAmount
+import uz.alijonov.foodexpress.base.loadImage
 
 class FoodAdapter(val list: List<ProductModel>, val handler: BaseAdapterListener) :
     BaseAdapter<FoodItemLayoutBinding>(list.toMutableList(), handler) {

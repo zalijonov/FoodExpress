@@ -66,4 +66,8 @@ object Prefs {
     fun getCartList(): List<ProductModel> {
         return Hawk.get(PREF_CART, emptyList())
     }
+
+    fun clearCart(){
+        Hawk.delete(PREF_CART)
+    }
 }

@@ -12,7 +12,8 @@ import uz.alijonov.foodexpress.model.EventModel
 import uz.alijonov.foodexpress.utils.Constants
 import uz.alijonov.foodexpress.utils.Prefs
 import uz.alijonov.foodexpress.view.adapter.FoodAdapter
-import uz.bdm.base.base.formattedAmount
+import uz.alijonov.foodexpress.base.formattedAmount
+import uz.alijonov.foodexpress.base.startActivity
 
 class CartFragment : BaseFragment<FragmentCartBinding>() {
     companion object {
@@ -57,6 +58,10 @@ class CartFragment : BaseFragment<FragmentCartBinding>() {
             binding.lyEmptyCart.visibility = View.VISIBLE
             binding.scrollView.visibility = View.GONE
         }
+
+        binding.btnOrder.setOnClickListener {
+            activity?.startActivity<CheckoutActivity>()
+        }
     }
 
     override fun loadData() {
@@ -65,6 +70,11 @@ class CartFragment : BaseFragment<FragmentCartBinding>() {
 
     override fun setData() {
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupViews()
     }
 
     @Subscribe

@@ -1,4 +1,4 @@
-package uz.bdm.base.base
+package uz.alijonov.foodexpress.base
 
 import android.app.Activity
 import android.content.Context

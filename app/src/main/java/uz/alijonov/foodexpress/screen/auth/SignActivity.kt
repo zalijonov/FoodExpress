@@ -10,9 +10,9 @@ import uz.alijonov.foodexpress.model.request.LoginRequest
 import uz.alijonov.foodexpress.model.request.RegisterRequest
 import uz.alijonov.foodexpress.screen.main.MainActivity
 import uz.alijonov.foodexpress.utils.Prefs
-import uz.bdm.base.base.showError
-import uz.bdm.base.base.showWarning
-import uz.bdm.base.base.startClearTopActivity
+import uz.alijonov.foodexpress.base.showError
+import uz.alijonov.foodexpress.base.showWarning
+import uz.alijonov.foodexpress.base.startClearTopActivity
 
 enum class SignState {
     LOGIN,

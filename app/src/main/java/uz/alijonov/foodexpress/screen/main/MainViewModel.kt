@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import uz.alijonov.foodexpress.model.CategoryModel
 import uz.alijonov.foodexpress.model.OfferModel
 import uz.alijonov.foodexpress.model.RestaurantModel
+import uz.alijonov.foodexpress.model.request.MakeOrderModel
 import uz.alijonov.foodexpress.model.request.MakeRatingRequest
 import uz.alijonov.foodexpress.repository.UserRepository
 
@@ -20,6 +21,7 @@ class MainViewModel : ViewModel() {
     val topData = MutableLiveData<List<RestaurantModel>>()
     val restaurantDetailData = MutableLiveData<RestaurantModel>()
     val makeRatingData = MutableLiveData<String>()
+    val makeOrderData = MutableLiveData<String>()
 
     fun getOffers() {
         userRepository.getOffers(error, progress, offerData)
@@ -43,6 +45,10 @@ class MainViewModel : ViewModel() {
 
     fun makeRating(request: MakeRatingRequest) {
         userRepository.makeRating(request, error, progress, makeRatingData)
+    }
+
+    fun makeOrder(request: MakeOrderModel) {
+        userRepository.makeOrder(request, error, progress, makeOrderData)
     }
 
 

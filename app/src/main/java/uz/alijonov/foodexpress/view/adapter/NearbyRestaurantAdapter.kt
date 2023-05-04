@@ -6,7 +6,7 @@ import uz.alijonov.foodexpress.base.BaseAdapter
 import uz.alijonov.foodexpress.base.BaseAdapterListener
 import uz.alijonov.foodexpress.databinding.NearbyItemLayoutBinding
 import uz.alijonov.foodexpress.model.RestaurantModel
-import uz.bdm.base.base.loadImage
+import uz.alijonov.foodexpress.base.loadImage
 import java.text.DecimalFormat
 
 interface RestaurantAdapterListener : BaseAdapterListener {

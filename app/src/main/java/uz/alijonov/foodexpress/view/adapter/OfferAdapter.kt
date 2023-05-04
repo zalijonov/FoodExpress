@@ -6,7 +6,7 @@ import uz.alijonov.foodexpress.base.BaseAdapter
 import uz.alijonov.foodexpress.base.BaseAdapterListener
 import uz.alijonov.foodexpress.databinding.OfferItemLayoutBinding
 import uz.alijonov.foodexpress.model.OfferModel
-import uz.bdm.base.base.loadImage
+import uz.alijonov.foodexpress.base.loadImage
 
 class OfferAdapter(val list: List<OfferModel>, val handler: BaseAdapterListener) :
     BaseAdapter<OfferItemLayoutBinding>(list.toMutableList(), handler) {

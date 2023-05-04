@@ -3,11 +3,9 @@ package uz.alijonov.foodexpress.view.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import uz.alijonov.foodexpress.base.BaseAdapter
-import uz.alijonov.foodexpress.base.BaseAdapterListener
-import uz.alijonov.foodexpress.databinding.NearbyItemLayoutBinding
 import uz.alijonov.foodexpress.databinding.TopItemLayoutBinding
 import uz.alijonov.foodexpress.model.RestaurantModel
-import uz.bdm.base.base.loadImage
+import uz.alijonov.foodexpress.base.loadImage
 import java.text.DecimalFormat
 
 class TopRestaurantAdapter(
