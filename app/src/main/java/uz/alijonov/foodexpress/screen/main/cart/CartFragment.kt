@@ -38,7 +38,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>() {
 
         if (Prefs.getCartList().isNotEmpty()) {
 
-            binding.scrollView.visibility = View.VISIBLE
+            binding.lyProducts.visibility = View.VISIBLE
             binding.lyEmptyCart.visibility = View.GONE
             binding.tvCartCount.text = "${Prefs.getCartList().count()} items"
             binding.recOrders.layoutManager = GridLayoutManager(activity, 2)
@@ -56,7 +56,7 @@ class CartFragment : BaseFragment<FragmentCartBinding>() {
             binding.tvTotalPrice.text = totalAmount.formattedAmount()
         } else {
             binding.lyEmptyCart.visibility = View.VISIBLE
-            binding.scrollView.visibility = View.GONE
+            binding.lyProducts.visibility = View.GONE
         }
 
         binding.btnOrder.setOnClickListener {

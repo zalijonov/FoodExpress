@@ -51,10 +51,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
         }
 
-        isLocationPermissionGranted()
+//        isLocationPermissionGranted()
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-        getLocation()
+        if(isLocationPermissionGranted()) {
+            getLocation()
+        }
 
         supportFragmentManager.beginTransaction().add(R.id.flContainer, activeFragment)
             .show(activeFragment).commit()

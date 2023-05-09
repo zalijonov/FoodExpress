@@ -7,22 +7,18 @@
     tools:background="@drawable/background"
     tools:context=".screen.main.cart.CartFragment">
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:visibility="visible">
-
         <LinearLayout
+            android:id="@+id/lyProducts"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="0dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="20dp"
                 android:text="@string/card_of_food_orders"
                 android:textColor="@color/white"
                 android:textSize="24sp"
@@ -33,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:layout_marginStart="20dp"
                 android:textColor="@color/gray_text"
                 android:textSize="15sp"
                 tools:text="4 items" />
@@ -44,11 +41,25 @@
                 android:layout_marginTop="12dp"
                 android:background="@color/gray" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recOrders"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp" />
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recOrders"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp" />
+                </LinearLayout>
+            </ScrollView>
+
+
+
+
 
 
             <com.google.android.material.card.MaterialCardView
@@ -58,6 +69,7 @@
                 android:backgroundTint="@color/black_2b"
                 app:cardCornerRadius="14dp"
                 app:strokeColor="@color/gray"
+                android:layout_marginHorizontal="20dp"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -95,12 +107,13 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:text="@string/order"
                 android:textAllCaps="false"
+                android:layout_marginHorizontal="20dp"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:cornerRadius="8dp" />
+                app:cornerRadius="8dp"
+                android:layout_marginBottom="20dp"/>
         </LinearLayout>
-    </ScrollView>
 
     <LinearLayout
         android:id="@+id/lyEmptyCart"

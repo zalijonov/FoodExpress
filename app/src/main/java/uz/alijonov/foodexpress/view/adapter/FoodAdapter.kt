@@ -37,7 +37,6 @@ class FoodAdapter(val list: List<ProductModel>, val handler: BaseAdapterListener
         holder.binding.imgPlus.setOnClickListener {
             var count = holder.binding.tvCount.text.toString().toIntOrNull() ?: 0
             count++
-
             item.cart_count = count
             holder.binding.tvCount.text
             Prefs.add2Cart(item)

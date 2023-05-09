@@ -43,4 +43,6 @@
     <string name="choose_a_payment_method">Choose a payment method</string>
     <string name="cash">Cash</string>
     <string name="credit_card">Credit card</string>
+    <string name="old_password">Old password</string>
+    <string name="confirm_with_an_sms_code">Confirm with an SMS code</string>
 </resources>

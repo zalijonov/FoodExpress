@@ -70,4 +70,5 @@ dependencies {
     implementation("com.github.fuzz-productions:RatingBar:1.0.6")
 
     implementation("org.greenrobot:eventbus:3.3.1")
+    implementation("com.github.fraggjkee:sms-confirmation-view:1.7.1")
 }

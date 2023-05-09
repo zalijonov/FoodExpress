@@ -249,7 +249,7 @@ class UserRepository {
             .subscribeWith(object : DisposableObserver<BaseResponse<String>>() {
                 override fun onNext(t: BaseResponse<String>) {
                     if (t.success) {
-                        success.value = t.data
+                        success.value = t.message
                     } else {
                         error.value = t.message
                     }
