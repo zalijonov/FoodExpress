@@ -9,17 +9,22 @@ import uz.alijonov.foodexpress.model.CategoryModel
 import uz.alijonov.foodexpress.model.OfferModel
 import uz.alijonov.foodexpress.model.ProductModel
 import uz.alijonov.foodexpress.model.RestaurantModel
+import uz.alijonov.foodexpress.model.request.ConfirmSmsRequest
 import uz.alijonov.foodexpress.model.request.LoginRequest
 import uz.alijonov.foodexpress.model.request.MakeOrderModel
 import uz.alijonov.foodexpress.model.request.MakeRatingRequest
 import uz.alijonov.foodexpress.model.request.RegisterRequest
 import uz.alijonov.foodexpress.model.request.RestaurantRequest
+import uz.alijonov.foodexpress.model.request.UpdatePasswordRequest
 import uz.alijonov.foodexpress.model.response.AuthResponse
 
 interface Api {
 
     @POST("login")
     fun login(@Body request: LoginRequest): Observable<BaseResponse<AuthResponse>>
+
+    @GET("user")
+    fun getUser(): Observable<BaseResponse<AuthResponse>>
 
     @POST("registration")
     fun registration(@Body request: RegisterRequest): Observable<BaseResponse<AuthResponse>>
@@ -44,6 +49,12 @@ interface Api {
 
     @POST("make_order")
     fun makeOrder(@Body request: MakeOrderModel): Observable<BaseResponse<String>>
+
+    @POST("send_confirm_code")
+    fun sendSms(@Body request: ConfirmSmsRequest): Observable<BaseResponse<Any?>>
+
+    @POST("reset_password")
+    fun resetPassword(@Body resetPasswordRequest: UpdatePasswordRequest): Observable<BaseResponse<AuthResponse?>>
 
 //    @GET("offer/{offer_id}/content")
 //    fun getOffer(@Path("offer_id") id: Int):

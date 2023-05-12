@@ -5,8 +5,11 @@ import androidx.lifecycle.ViewModel
 import uz.alijonov.foodexpress.model.CategoryModel
 import uz.alijonov.foodexpress.model.OfferModel
 import uz.alijonov.foodexpress.model.RestaurantModel
+import uz.alijonov.foodexpress.model.request.ConfirmSmsRequest
 import uz.alijonov.foodexpress.model.request.MakeOrderModel
 import uz.alijonov.foodexpress.model.request.MakeRatingRequest
+import uz.alijonov.foodexpress.model.request.UpdatePasswordRequest
+import uz.alijonov.foodexpress.model.response.AuthResponse
 import uz.alijonov.foodexpress.repository.UserRepository
 
 class MainViewModel : ViewModel() {
@@ -22,6 +25,13 @@ class MainViewModel : ViewModel() {
     val restaurantDetailData = MutableLiveData<RestaurantModel>()
     val makeRatingData = MutableLiveData<String>()
     val makeOrderData = MutableLiveData<String>()
+    val sendSmsData = MutableLiveData<Any?>()
+    val userData = MutableLiveData<AuthResponse?>()
+    val getUserData = MutableLiveData<AuthResponse>()
+
+    fun getUser(){
+        userRepository.getUser(error, tempProgress, getUserData)
+    }
 
     fun getOffers() {
         userRepository.getOffers(error, progress, offerData)
@@ -49,6 +59,14 @@ class MainViewModel : ViewModel() {
 
     fun makeOrder(request: MakeOrderModel) {
         userRepository.makeOrder(request, error, progress, makeOrderData)
+    }
+
+    fun sendSms(request: ConfirmSmsRequest) {
+        userRepository.sendSms(request, error, progress, sendSmsData)
+    }
+
+    fun resetPassword(body: UpdatePasswordRequest){
+        userRepository.resetPassword(body, error, progress, userData)
     }
 
 

@@ -10,8 +10,8 @@ data class RestaurantRequest(
     var food_id: Int = 0,
     var keyword: String = "",
     var sort: SortType = SortType.DISTANCE,
-    var longitude: Double = Constants.LONGITUDE.toDouble(),
-    val latitude: Double = Constants.LATITUDE.toDouble()
+    var longitude: Double = Constants.LONGITUDE,
+    val latitude: Double = Constants.LATITUDE
 )
 
 enum class SortType {

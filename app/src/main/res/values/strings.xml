@@ -45,4 +45,9 @@
     <string name="credit_card">Credit card</string>
     <string name="old_password">Old password</string>
     <string name="confirm_with_an_sms_code">Confirm with an SMS code</string>
+    <string name="reply">Reply</string>
+    <string name="confirm">Confirm</string>
+    <string name="new_password">New password</string>
+    <string name="you_have_changed_your_password">You have changed your password</string>
+    <string name="ok">OK</string>
 </resources>

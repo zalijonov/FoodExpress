@@ -11,12 +11,14 @@ import uz.alijonov.foodexpress.api.Client
 import uz.alijonov.foodexpress.model.CategoryModel
 import uz.alijonov.foodexpress.model.OfferModel
 import uz.alijonov.foodexpress.model.RestaurantModel
+import uz.alijonov.foodexpress.model.request.ConfirmSmsRequest
 import uz.alijonov.foodexpress.model.request.LoginRequest
 import uz.alijonov.foodexpress.model.request.MakeOrderModel
 import uz.alijonov.foodexpress.model.request.MakeRatingRequest
 import uz.alijonov.foodexpress.model.request.RegisterRequest
 import uz.alijonov.foodexpress.model.request.RestaurantRequest
 import uz.alijonov.foodexpress.model.request.SortType
+import uz.alijonov.foodexpress.model.request.UpdatePasswordRequest
 import uz.alijonov.foodexpress.model.response.AuthResponse
 import uz.alijonov.foodexpress.utils.Constants
 
@@ -32,6 +34,35 @@ class UserRepository {
         success: MutableLiveData<AuthResponse>
     ) {
         compositeDisposable.add(api.login(request).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doFinally { progress.value = false }
+            .doOnSubscribe { progress.value = true }
+            .subscribeWith(object : DisposableObserver<BaseResponse<AuthResponse>>() {
+                override fun onNext(t: BaseResponse<AuthResponse>) {
+                    if (t.success) {
+                        success.value = t.data
+                    } else {
+                        error.value = t.message
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                    error.value = e.message
+                }
+
+                override fun onComplete() {
+
+                }
+            })
+        )
+    }
+
+    fun getUser(
+        error: MutableLiveData<String>,
+        progress: MutableLiveData<Boolean>,
+        success: MutableLiveData<AuthResponse>
+    ) {
+        compositeDisposable.add(api.getUser().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doFinally { progress.value = false }
             .doOnSubscribe { progress.value = true }
@@ -281,6 +312,68 @@ class UserRepository {
                 override fun onNext(t: BaseResponse<String>) {
                     if (t.success) {
                         success.value = t.message
+                    } else {
+                        error.value = t.message
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                    error.value = e.message
+                }
+
+                override fun onComplete() {
+
+                }
+            })
+        )
+    }
+
+    fun sendSms(
+        request: ConfirmSmsRequest,
+        error: MutableLiveData<String>,
+        progress: MutableLiveData<Boolean>,
+        success: MutableLiveData<Any?>
+    ) {
+        compositeDisposable.add(api.sendSms(request)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doFinally { progress.value = false }
+            .doOnSubscribe { progress.value = true }
+            .subscribeWith(object : DisposableObserver<BaseResponse<Any?>>() {
+                override fun onNext(t: BaseResponse<Any?>) {
+                    if (t.success) {
+                        success.value = t.message
+                    } else {
+                        error.value = t.message
+                    }
+                }
+
+                override fun onError(e: Throwable) {
+                    error.value = e.message
+                }
+
+                override fun onComplete() {
+
+                }
+            })
+        )
+    }
+
+    fun resetPassword(
+        request: UpdatePasswordRequest,
+        error: MutableLiveData<String>,
+        progress: MutableLiveData<Boolean>,
+        success: MutableLiveData<AuthResponse?>
+    ) {
+        compositeDisposable.add(api.resetPassword(request)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doFinally { progress.value = false }
+            .doOnSubscribe { progress.value = true }
+            .subscribeWith(object : DisposableObserver<BaseResponse<AuthResponse?>>() {
+                override fun onNext(t: BaseResponse<AuthResponse?>) {
+                    if (t.success) {
+                        success.value = t.data
                     } else {
                         error.value = t.message
                     }

@@ -9,6 +9,7 @@ import android.location.LocationListener
 import android.location.LocationManager
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import uz.alijonov.foodexpress.R
@@ -20,6 +21,7 @@ import uz.alijonov.foodexpress.screen.main.home.HomeFragment
 import uz.alijonov.foodexpress.screen.main.map.MapsFragment
 import uz.alijonov.foodexpress.screen.main.profile.ProfileFragment
 import uz.alijonov.foodexpress.utils.Constants
+import uz.alijonov.foodexpress.utils.Prefs
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -31,6 +33,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private var currentLocation: Location? = null
     lateinit var locationManager: LocationManager
+    lateinit var viewModel: MainViewModel
 
     //    private lateinit var fusedLocationServie: FusedLocationProviderClient*
     override fun getViewBinding(): ActivityMainBinding {
@@ -39,12 +42,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initViews() {
 
-        if(!EventBus.getDefault().isRegistered(this)){
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        viewModel.getUserData.observe(this) {
+            Prefs.setUser(it)
+            Prefs.setToken(it.token)
+        }
+
+        if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this)
         }
 
-        if(intent.hasExtra(Constants.START_FRAGMENT)){
-            if(intent.getIntExtra(Constants.START_FRAGMENT, 0) == R.id.actionCart){
+        if (intent.hasExtra(Constants.START_FRAGMENT)) {
+            if (intent.getIntExtra(Constants.START_FRAGMENT, 0) == R.id.actionCart) {
                 binding.bottomNavigation.selectedItemId = R.id.actionCart
 
                 activeFragment = cartFragment
@@ -54,7 +64,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 //        isLocationPermissionGranted()
         locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-        if(isLocationPermissionGranted()) {
+        if (isLocationPermissionGranted()) {
             getLocation()
         }
 
@@ -106,19 +116,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     @Subscribe
-    fun onEvent(event: EventModel<Any>){
+    fun onEvent(event: EventModel<Any>) {
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        if(EventBus.getDefault().isRegistered(this)){
+        if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this)
         }
     }
 
     override fun loadData() {
-
+        viewModel.getUser()
     }
 
     override fun initData() {

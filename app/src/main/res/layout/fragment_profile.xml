@@ -119,16 +119,129 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <com.fraggjkee.smsconfirmationview.SmsConfirmationView
-            android:id="@+id/smsConfirmator"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            app:scv_codeLength="4"
-            app:scv_symbolBackgroundColor="@color/black_32"
-            app:scv_symbolBorderColor="@color/gray_text"
-            app:scv_symbolsSpacing="12dp"
-            app:scv_symbolBorderCornerRadius="12dp"
-            app:scv_symbolBorderWidth="1dp"/>
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.fraggjkee.smsconfirmationview.SmsConfirmationView
+                android:id="@+id/smsConfirmator"
+                android:layout_width="wrap_content"
+                app:scv_smsDetectionMode="auto"
+                android:layout_height="wrap_content"
+                app:scv_codeLength="4"
+                app:scv_symbolBackgroundColor="@color/black_32"
+                app:scv_symbolBorderColor="@color/gray_text"
+                app:scv_symbolBorderCornerRadius="12dp"
+                app:scv_symbolBorderWidth="1dp"
+                app:scv_symbolsSpacing="12dp" />
+
+            <TextView
+                android:id="@+id/tvRemainingTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="3:45" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnReply"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/transparent_100"
+                app:cardCornerRadius="10dp"
+                app:strokeColor="@color/gray_text"
+                app:strokeWidth="1dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/reply"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnConfirm"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/gradient"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="@string/confirm"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="10dp" />
+
+            <LinearLayout
+                android:id="@+id/lyStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/yellow"
+                    android:textSize="15sp"
+                    tools:text="Success" />
+
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="" />-->
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/new_password"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNewPwd"
+            style="@style/EditTextOutlined"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="20dp"
+            app:passwordToggleDrawable="@drawable/outline_remove_red_eye_24"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/gray_text">
+
+            <EditText
+                android:id="@+id/edNewPwd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 </ScrollView>
